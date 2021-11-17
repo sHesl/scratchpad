@@ -42,7 +42,7 @@ func main() {
 
 	osys = "linux"
 	arch = "amd64"
-	img := "docker-daemon:bitnami/kubectl:1.20" // os.Args[1]
+	img := "docker-daemon:amazonlinux:2" // os.Args[1]
 	srcRef, err := alltransports.ParseImageName(img)
 	if err != nil {
 		errOut(74, "invalid source name %s: %v", img, err)
@@ -128,7 +128,7 @@ func main() {
 
 	unpackDir := destOnDisk + "/unpacked"
 	os.Mkdir(unpackDir, os.ModePerm)
-	if err := umoci.Unpack(engineExt, "bitnami/kubectl:1.20", unpackDir, opts); err != nil {
+	if err := umoci.Unpack(engineExt, "amazonlinux:2", unpackDir, opts); err != nil {
 		panic(err)
 	}
 
